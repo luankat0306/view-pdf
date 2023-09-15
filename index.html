@@ -51,16 +51,16 @@
           const srcURL = URL.createObjectURL(
             new Blob([newArrayBufferPdf], { type: "application/pdf" })
           );
-          if (os === "unknown") {
-            document
-              .getElementById("pdf")
-              .setAttribute(
-                "src",
-                `https://docs.google.com/viewer?url=${srcURL}&embedded=true`
-              );
-          } else {
-            window.open(srcURL);
-          }
+          // if (os === "unknown") {
+          document
+            .getElementById("pdf")
+            .setAttribute(
+              "src",
+              `https://docs.google.com/viewer?url=${srcURL}&embedded=true`
+            );
+          // } else {
+          //   window.open(srcURL);
+          // }
         } else {
           alert("Đường dẫn file không tồn tại ");
         }
