@@ -52,7 +52,12 @@
             new Blob([newArrayBufferPdf], { type: "application/pdf" })
           );
           if (os === "unknown") {
-            document.getElementById("pdf").setAttribute("src", srcURL);
+            document
+              .getElementById("pdf")
+              .setAttribute(
+                "src",
+                `https://docs.google.com/viewer?url=${srcURL}&embedded=true`
+              );
           } else {
             window.open(srcURL);
           }
