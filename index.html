@@ -48,20 +48,14 @@
             // color: Watermark.colorRGB(255, 10, 10)
           });
           const os = getMobileOperatingSystem();
-          const srcURL = new Blob([newArrayBufferPdf], {
-            type: "application/pdf",
-          });
-
-          // if (os === "unknown") {
-          document
-            .getElementById("pdf")
-            .setAttribute(
-              "src",
-              `https://docs.google.com/viewer?url=${srcURL}&embedded=true`
-            );
-          // } else {
-          //   window.open(srcURL);
-          // }
+          const srcURL = URL.createObjectURL(
+            new Blob([newArrayBufferPdf], { type: "application/pdf" })
+          );
+          if (os === "unknown") {
+            document.getElementById("pdf").setAttribute("src", srcURL);
+          } else {
+            window.open(srcURL);
+          }
         } else {
           alert("Đường dẫn file không tồn tại ");
         }
