@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./modifyPdf/dist/watermarkPdf.js"></script>
+    <script>
+      window.onload = async () => {
+        // const origin = location.origin;
+        const origin = "https://documents.vietbank.com.vn";
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+          get: (searchParams, prop) => searchParams.get(prop),
+        });
+        const path = params?.path;
+        if (path) {
+          const url = `${origin}${path}`;
+          const dateNow = new Date().toLocaleString("vi");
+          const text = `Võ Trí Luân - ${dateNow}`;
+          const newArrayBufferPdf = await Watermark.watermarkPdf({
+            url,
+            text,
+            // rotate: -1, // -1: -45; 0: 0; 1: 45; Default: 1
+            // opacity: 1, // 0 -> 1; Default: 0.2,
+            // fontSize: 16, // Default: 16
+            // color: Watermark.colorRGB(255, 10, 10)
+          });
+
+          document
+            .getElementById("pdf")
+            .setAttribute(
+              "src",
+              URL.createObjectURL(
+                new Blob([newArrayBufferPdf], { type: "application/pdf" })
+              )
+            );
+        } else {
+          alert("Đường dẫn file không tồn tại");
+        }
+      };
+    </script>
+    <div style="height: calc(100vh - 50px); width: 100%">
+      <iframe id="pdf" height="100%" width="100%"></iframe>
+    </div>
+  </body>
+</html>
