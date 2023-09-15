@@ -9,8 +9,8 @@
     <script src="./modifyPdf/dist/watermarkPdf.js"></script>
     <script>
       window.onload = async () => {
-        // const origin = location.origin;
-        const origin = "https://documents.vietbank.com.vn";
+        const origin = location.origin;
+        // const origin = "https://documents.vietbank.com.vn";
         const params = new Proxy(new URLSearchParams(window.location.search), {
           get: (searchParams, prop) => searchParams.get(prop),
         });
