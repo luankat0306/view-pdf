@@ -16,7 +16,7 @@
         });
         const path = params?.path;
         if (path) {
-          // const url = `${origin}${path}`;
+          const url = `${origin}${path}`;
           const dateNow = new Date().toLocaleString("vi");
           const text = `Võ Trí Luân - ${dateNow}`;
           const newArrayBufferPdf = await Watermark.watermarkPdf({
