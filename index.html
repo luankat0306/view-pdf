@@ -16,11 +16,11 @@
         });
         const path = params?.path;
         if (path) {
-          const url = `${origin}${path}`;
+          // const url = `${origin}${path}`;
           const dateNow = new Date().toLocaleString("vi");
           const text = `Võ Trí Luân - ${dateNow}`;
           const newArrayBufferPdf = await Watermark.watermarkPdf({
-            url,
+            url: "https://www.buds.com.ua/images/Lorem_ipsum.pdf",
             text,
             // rotate: -1, // -1: -45; 0: 0; 1: 45; Default: 1
             // opacity: 1, // 0 -> 1; Default: 0.2,
