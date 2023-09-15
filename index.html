@@ -51,7 +51,7 @@
           const srcURL = URL.createObjectURL(
             new Blob([newArrayBufferPdf], { type: "application/pdf" })
           );
-          if (os === "unknown") {
+          if (os !== "Android") {
             document.getElementById("pdf").setAttribute("src", srcURL);
           } else {
             window.open(srcURL);
@@ -62,7 +62,7 @@
       };
     </script>
     <div style="height: calc(100vh - 50px); width: 100%">
-      <iframe id="pdf" height="100%" width="100%"></iframe>
+      <iframe style="border: none" id="pdf" height="100%" width="100%"></iframe>
     </div>
   </body>
 </html>
